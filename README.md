@@ -1,6 +1,13 @@
 # 🎓 ClassConnect – School Relationship Intelligence & Graph Explorer
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://classconnectdb.netlify.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Database](https://img.shields.io/badge/Database-CognoDB%20%2F%20Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white)](https://cognodb.cloud)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 **ClassConnect** is a modern, high-performance School Data & Relationship Intelligence web application built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, and **CognoDB / Neo4j**. It models the interconnected academic ecosystem of a school—connecting students, teachers, classes, and subjects as a first-class property graph and exposing complex multi-hop relationship traversals via **Cypher** queries in real time.
+
+🔗 **Live Application URL**: [https://classconnectdb.netlify.app/](https://classconnectdb.netlify.app/)
 
 ---
 
@@ -444,28 +451,41 @@ RETURN s.id AS id,
 
 ## 15. UI Screenshots
 
-| View | Description |
-| :--- | :--- |
-| **Multi-Hop Traversal Explorer** | *Visualizing student path: Student ➔ Enrolled Class and Student ➔ Subject ➔ Teacher.* |
-| **Interactive Cypher Console** | *Live query execution with execution latency profiling and dynamic results table.* |
-| **Class Rosters & Capacities** | *Homeroom capacity utilization bars and enrolled student rosters.* |
-| **Teacher Outreach & Metrics** | *Faculty department breakdown and student reach calculations.* |
+### Dashboard & Multi-Hop Traversal Explorer
+The user interface features a real-time graph status indicator, quick summary metric cards, an interactive student directory with search filtering, a multi-hop traversal visualizer displaying connected teachers, subjects, and grades, and the underlying Cypher query engine.
 
-> *(To add your own screenshots, capture images from your running instance at `http://localhost:3000` and place them in the `public/screenshots/` directory, referencing them via standard Markdown `![Alt Text](public/screenshots/image.png)`).*
+![ClassConnect Relationship Intelligence Platform](public/screenshots/classconnect-dashboard.png)
+
+### Key Interface Capabilities:
+- **Summary Metrics**: Live counts of total students, faculty teachers, active classes, and relationship types.
+- **Multi-Hop Traversal Card**: Traces `Student ➔ [TAKES (grade)] ➔ Subject ➔ [TAUGHT_BY] ➔ Teacher` dynamically.
+- **Homeroom Enrollment Badge**: Direct mapping of student to homeroom class cohort.
+- **Underlying Cypher Traversal Query**: Live display of the exact Cypher query driving the multi-hop relationship view.
 
 ---
 
 ## 16. Live Demo & Deployment
 
-ClassConnect is ready to deploy to [Vercel](https://vercel.com/):
+The application is deployed and live on **Netlify**:
 
-1. Push your code to a GitHub repository.
-2. Import the project into Vercel.
-3. In the Vercel Project Settings, add your Environment Variables:
-   - `COGNODB_URI`
-   - `COGNODB_USERNAME`
-   - `COGNODB_PASSWORD`
-4. Deploy!
+🌐 **Live URL**: [https://classconnectdb.netlify.app/](https://classconnectdb.netlify.app/)
+
+### Deploying Your Own Copy to Netlify:
+
+1. **Push to Git**: Push your project repository to GitHub or GitLab.
+2. **Import to Netlify**:
+   - Log in to [Netlify](https://www.netlify.com/).
+   - Click **"Add new site"** ➔ **"Import an existing project"** ➔ Select your Git repository.
+3. **Configure Build Settings**:
+   - **Base directory**: `classconnect` (or root if repository is in root)
+   - **Build command**: `npm run build`
+   - **Publish directory**: `.next`
+4. **Configure Environment Variables**:
+   In Netlify **Site configuration ➔ Environment variables**, add:
+   - `COGNODB_URI`: `bolt+s://your-instance-id.databases.cognodb.cloud`
+   - `COGNODB_USERNAME`: `cognodb`
+   - `COGNODB_PASSWORD`: `your_secure_password`
+5. **Deploy Site**: Click **"Deploy"**. Your live school graph platform is ready!
 
 ---
 
